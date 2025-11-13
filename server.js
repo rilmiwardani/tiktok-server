@@ -89,6 +89,14 @@ setInterval(() => {
 }, 5000)
 
 // Serve frontend files
+// Anda bisa membuat endpoint rahasia:
+app.get('/admin-refresh-all', (req, res) => {
+    
+     // Ini adalah perintah intinya:
+     console.log("ADMIN: Memicu force-refresh ke semua klien!");
+     io.emit('force-refresh', { message: 'Update baru tersedia!' });
+     
+     res.send('Perintah refresh terkirim!');
 app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.send('TikTok Live backend aktif');
